@@ -54,12 +54,13 @@
         width: auto;
         margin-top: 2%;
         height: 30px;
-        margin-left: 35%;
+        display: block;
+        justify-content: center;
+        text-align: center;
       }
 
       span {
-        margin-left: 12.5%;
-        font-size: 20px;
+      text-align:
       }
 
       form {
@@ -93,6 +94,12 @@
       #id_username {
         margin-left: 19.1%;
       }
+      .noname{
+        display: block;
+        justify-content: center;
+        text-align: center;
+
+      }
     </style>
   {% load static %}
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -116,7 +123,8 @@
       <img src="{% static 'board/img/index/logo3.PNG' %}" alt="">
     </div>
     <div class="welcome">
-      <span><strong>Welcome</strong>/환영합니다</span><br> cc는 관리자의 승인을 받은 사용자만 로그인 가능합니다.
+      <span><strong>Welcome</strong>/환영합니다</span><br>코딩능력 향상을 위한 당신과 가장 가까운 코딩선생님 "Coding Curious"
+
     </div>
     <!-- 로그인 폼 -->
     <form method="post" action="{% url 'board:login' %}">
@@ -137,14 +145,16 @@
           {% endfor %}</ul>{% endif %}
 
     </form>
+<div class="noname">
+  {% if request.GET.noname %}
+   <p>없는 계정입니다 회원가입 후 이용해주세요</p></span>
+  {% endif %} {% if request.GET.unlogin %}
+  <p>
+    <p>관리자 승인이 필요한 계정입니다 <br>빠른 승인을 필요로 하신다면 오픈 카카오톡으로 문의 부탁드립니다</p>
+  </p>
+  {% endif %}
+</div>
 
-    {% if request.GET.noname %}
-    <p>없는 계정입니다 회원가입 후 이용해주세요</p>
-    {% endif %} {% if request.GET.unlogin %}
-    <p>
-      <p>관리자 승인이 필요한 계정입니다 <br>빠른 승인을 필요로 하신다면 오픈 카카오톡으로 문의 부탁드립니다</p>
-    </p>
-    {% endif %}
     <a href="{%url 'board:join' %}"><button class="join_button">회원가입/Join</button></a>
 
   </body>
